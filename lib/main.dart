@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_project_book_store/pages/books_page.dart';
 import 'package:flutter_project_book_store/pages/home_page.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
@@ -18,6 +19,9 @@ class MyApp extends StatelessWidget {
         primarySwatch: Colors.blue,
       ),
       home: const HomePage(),
+      routes: <String, WidgetBuilder>{
+        '/books': (BuildContext context) => const BooksPage()
+      },
     );
   }
 }

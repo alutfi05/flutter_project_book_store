@@ -1,9 +1,9 @@
-// import 'dart:js';
-
 import 'package:flutter/material.dart';
+import 'package:flutter_project_book_store/models/book_filter.dart';
 import 'package:flutter_project_book_store/models/category.dart';
 import 'package:flutter_project_book_store/models/pagination.dart';
 import 'package:flutter_project_book_store/provider/category_provider.dart';
+import 'package:flutter_project_book_store/providers.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 class HomeCategoriesWidget extends ConsumerWidget {
@@ -42,7 +42,7 @@ class HomeCategoriesWidget extends ConsumerWidget {
 
     return categories.when(
       data: (list) {
-        return _buildCategoryList(list!);
+        return _buildCategoryList(list!, ref);
       },
       error: (_, __) => const Center(
         child: Text("Error"),
@@ -53,7 +53,7 @@ class HomeCategoriesWidget extends ConsumerWidget {
     );
   }
 
-  Widget _buildCategoryList(List<Category> categories) {
+  Widget _buildCategoryList(List<Category> categories, WidgetRef ref) {
     return Container(
       height: 100,
       alignment: Alignment.centerLeft,
@@ -65,13 +65,29 @@ class HomeCategoriesWidget extends ConsumerWidget {
         itemBuilder: (context, index) {
           var data = categories[index];
           return GestureDetector(
-            onTap: () {},
+            onTap: () {
+              BookFilterModel filterModel = BookFilterModel(
+                paginationModel: PaginationModel(page: 1, pageSize: 10),
+                categoryId: data.categoryId,
+              );
+
+              ref.read(booksFilterProvider.notifier).setBookFilter(filterModel);
+              ref.read(booksNotifierProvider.notifier).getBooks();
+
+              Navigator.of(context).pushNamed(
+                "/books",
+                arguments: {
+                  'categoryId': data.categoryId,
+                  'categoryName': data.categoryName,
+                },
+              );
+            },
             child: Padding(
-              padding: EdgeInsets.all(8),
+              padding: const EdgeInsets.all(8),
               child: Column(
                 children: [
                   Container(
-                    margin: EdgeInsets.all(8),
+                    margin: const EdgeInsets.all(8),
                     width: 50,
                     height: 50,
                     alignment: Alignment.center,
