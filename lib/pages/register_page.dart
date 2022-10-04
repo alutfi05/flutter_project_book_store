@@ -1,3 +1,4 @@
+import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_project_book_store/api/api_service.dart';
 import 'package:http/http.dart';
@@ -171,7 +172,7 @@ class _RegisterPageState extends State<RegisterPage> {
               password = onSavedVal.toString().trim();
             },
             showPrefixIcon: true,
-            prefixIcon: const Icon(Icons.key),
+            prefixIcon: const Icon(Icons.lock_open),
             borderRadius: 10,
             contentPadding: 15,
             fontSize: 14,
@@ -220,7 +221,7 @@ class _RegisterPageState extends State<RegisterPage> {
               confirmPassword = onSavedVal.toString().trim();
             },
             showPrefixIcon: true,
-            prefixIcon: const Icon(Icons.key),
+            prefixIcon: const Icon(Icons.lock_open),
             borderRadius: 10,
             contentPadding: 15,
             fontSize: 14,
@@ -274,6 +275,8 @@ class _RegisterPageState extends State<RegisterPage> {
                           "Ok",
                           () {
                             Navigator.of(context).pop();
+                            Navigator.of(context).pushNamedAndRemoveUntil(
+                                "/login", (route) => false);
                           },
                         );
                       } else {
@@ -310,11 +313,16 @@ class _RegisterPageState extends State<RegisterPage> {
                 children: <TextSpan>[
                   TextSpan(text: "Already have an account? "),
                   TextSpan(
-                    text: "Login Here",
+                    text: "Login",
                     style: TextStyle(
                       color: Color(0xff1bba85),
                       fontWeight: FontWeight.bold,
                     ),
+                    recognizer: TapGestureRecognizer()
+                      ..onTap = () {
+                        Navigator.of(context).pushNamedAndRemoveUntil(
+                            "/login", (route) => false);
+                      },
                   ),
                 ],
               ),
