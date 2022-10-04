@@ -3,6 +3,7 @@ import 'package:flutter_project_book_store/application/notifier/book_filter_noti
 import 'package:flutter_project_book_store/application/notifier/books_notifier.dart';
 import 'package:flutter_project_book_store/application/state/book_state.dart';
 import 'package:flutter_project_book_store/models/book.dart';
+import 'package:flutter_project_book_store/models/slider.dart';
 import 'package:flutter_project_book_store/models/pagination.dart';
 import 'package:flutter_project_book_store/models/category.dart';
 import './models/book_filter.dart';
@@ -36,4 +37,13 @@ final booksNotifierProvider = StateNotifierProvider<BooksNotifier, BooksState>(
     ref.watch(apiService),
     ref.watch(booksFilterProvider),
   ),
+);
+
+final slidersProvider =
+    FutureProvider.family<List<SliderModel>?, PaginationModel>(
+  (ref, paginationModel) {
+    final sliderRepo = ref.watch(apiService);
+    return sliderRepo.getSliders(
+        paginationModel.page, paginationModel.pageSize);
+  },
 );

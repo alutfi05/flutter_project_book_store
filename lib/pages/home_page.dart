@@ -4,6 +4,7 @@ import 'package:flutter_project_book_store/models/book.dart';
 import 'package:flutter_project_book_store/models/category.dart';
 import 'package:flutter_project_book_store/widgets/widget_home_books.dart';
 import 'package:flutter_project_book_store/widgets/widget_home_categories.dart';
+import 'package:flutter_project_book_store/widgets/widget_home_slider.dart';
 
 class HomePage extends StatelessWidget {
   const HomePage({super.key});
@@ -13,9 +14,10 @@ class HomePage extends StatelessWidget {
     return Scaffold(
       body: Container(
         child: ListView(
-          children: [
-            const HomeCategoriesWidget(),
-            const HomeBooksWidget()
+          children: const [
+            HomeSliderWidget(),
+            HomeCategoriesWidget(),
+            HomeBooksWidget(),
             // ProductCard(
             //   model: model,
             // ),

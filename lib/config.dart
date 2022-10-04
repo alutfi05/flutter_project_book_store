@@ -6,6 +6,7 @@ class Config {
   static const String bookAPI = "api/book";
   static const String registerAPI = "api/register";
   static const String loginAPI = "api/login";
+  static const String sliderAPI = "api/slider";
   static const int pageSize = 10;
   static const String currency = "Rp ";
 }

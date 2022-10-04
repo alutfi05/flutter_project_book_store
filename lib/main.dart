@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_project_book_store/pages/books_page.dart';
+import 'package:flutter_project_book_store/pages/dashboard_page.dart';
 import 'package:flutter_project_book_store/pages/home_page.dart';
 import 'package:flutter_project_book_store/pages/login_pages.dart';
 import 'package:flutter_project_book_store/pages/register_page.dart';
@@ -13,7 +14,7 @@ void main() async {
   bool _result = await SharedService.isLoggedIn();
 
   if (_result) {
-    _defaultHome = const HomePage();
+    _defaultHome = const DashboardPage();
   }
   runApp(const ProviderScope(child: MyApp()));
 }
