@@ -19,6 +19,7 @@ mixin _$BookFilterModel {
   PaginationModel get paginationModel => throw _privateConstructorUsedError;
   String? get categoryId => throw _privateConstructorUsedError;
   String? get sortBy => throw _privateConstructorUsedError;
+  List<String>? get bookIds => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
   $BookFilterModelCopyWith<BookFilterModel> get copyWith =>
@@ -31,7 +32,10 @@ abstract class $BookFilterModelCopyWith<$Res> {
           BookFilterModel value, $Res Function(BookFilterModel) then) =
       _$BookFilterModelCopyWithImpl<$Res>;
   $Res call(
-      {PaginationModel paginationModel, String? categoryId, String? sortBy});
+      {PaginationModel paginationModel,
+      String? categoryId,
+      String? sortBy,
+      List<String>? bookIds});
 
   $PaginationModelCopyWith<$Res> get paginationModel;
 }
@@ -50,6 +54,7 @@ class _$BookFilterModelCopyWithImpl<$Res>
     Object? paginationModel = freezed,
     Object? categoryId = freezed,
     Object? sortBy = freezed,
+    Object? bookIds = freezed,
   }) {
     return _then(_value.copyWith(
       paginationModel: paginationModel == freezed
@@ -64,6 +69,10 @@ class _$BookFilterModelCopyWithImpl<$Res>
           ? _value.sortBy
           : sortBy // ignore: cast_nullable_to_non_nullable
               as String?,
+      bookIds: bookIds == freezed
+          ? _value.bookIds
+          : bookIds // ignore: cast_nullable_to_non_nullable
+              as List<String>?,
     ));
   }
 
@@ -83,7 +92,10 @@ abstract class _$$_BookFilterModelCopyWith<$Res>
       __$$_BookFilterModelCopyWithImpl<$Res>;
   @override
   $Res call(
-      {PaginationModel paginationModel, String? categoryId, String? sortBy});
+      {PaginationModel paginationModel,
+      String? categoryId,
+      String? sortBy,
+      List<String>? bookIds});
 
   @override
   $PaginationModelCopyWith<$Res> get paginationModel;
@@ -105,6 +117,7 @@ class __$$_BookFilterModelCopyWithImpl<$Res>
     Object? paginationModel = freezed,
     Object? categoryId = freezed,
     Object? sortBy = freezed,
+    Object? bookIds = freezed,
   }) {
     return _then(_$_BookFilterModel(
       paginationModel: paginationModel == freezed
@@ -119,6 +132,10 @@ class __$$_BookFilterModelCopyWithImpl<$Res>
           ? _value.sortBy
           : sortBy // ignore: cast_nullable_to_non_nullable
               as String?,
+      bookIds: bookIds == freezed
+          ? _value._bookIds
+          : bookIds // ignore: cast_nullable_to_non_nullable
+              as List<String>?,
     ));
   }
 }
@@ -127,7 +144,11 @@ class __$$_BookFilterModelCopyWithImpl<$Res>
 
 class _$_BookFilterModel implements _BookFilterModel {
   _$_BookFilterModel(
-      {required this.paginationModel, this.categoryId, this.sortBy});
+      {required this.paginationModel,
+      this.categoryId,
+      this.sortBy,
+      final List<String>? bookIds})
+      : _bookIds = bookIds;
 
   @override
   final PaginationModel paginationModel;
@@ -135,10 +156,18 @@ class _$_BookFilterModel implements _BookFilterModel {
   final String? categoryId;
   @override
   final String? sortBy;
+  final List<String>? _bookIds;
+  @override
+  List<String>? get bookIds {
+    final value = _bookIds;
+    if (value == null) return null;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(value);
+  }
 
   @override
   String toString() {
-    return 'BookFilterModel(paginationModel: $paginationModel, categoryId: $categoryId, sortBy: $sortBy)';
+    return 'BookFilterModel(paginationModel: $paginationModel, categoryId: $categoryId, sortBy: $sortBy, bookIds: $bookIds)';
   }
 
   @override
@@ -150,7 +179,8 @@ class _$_BookFilterModel implements _BookFilterModel {
                 .equals(other.paginationModel, paginationModel) &&
             const DeepCollectionEquality()
                 .equals(other.categoryId, categoryId) &&
-            const DeepCollectionEquality().equals(other.sortBy, sortBy));
+            const DeepCollectionEquality().equals(other.sortBy, sortBy) &&
+            const DeepCollectionEquality().equals(other._bookIds, _bookIds));
   }
 
   @override
@@ -158,7 +188,8 @@ class _$_BookFilterModel implements _BookFilterModel {
       runtimeType,
       const DeepCollectionEquality().hash(paginationModel),
       const DeepCollectionEquality().hash(categoryId),
-      const DeepCollectionEquality().hash(sortBy));
+      const DeepCollectionEquality().hash(sortBy),
+      const DeepCollectionEquality().hash(_bookIds));
 
   @JsonKey(ignore: true)
   @override
@@ -170,7 +201,8 @@ abstract class _BookFilterModel implements BookFilterModel {
   factory _BookFilterModel(
       {required final PaginationModel paginationModel,
       final String? categoryId,
-      final String? sortBy}) = _$_BookFilterModel;
+      final String? sortBy,
+      final List<String>? bookIds}) = _$_BookFilterModel;
 
   @override
   PaginationModel get paginationModel;
@@ -178,6 +210,8 @@ abstract class _BookFilterModel implements BookFilterModel {
   String? get categoryId;
   @override
   String? get sortBy;
+  @override
+  List<String>? get bookIds;
   @override
   @JsonKey(ignore: true)
   _$$_BookFilterModelCopyWith<_$_BookFilterModel> get copyWith =>

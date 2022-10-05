@@ -23,11 +23,13 @@ mixin _$Book {
   String get bookTitle => throw _privateConstructorUsedError;
   Category get category => throw _privateConstructorUsedError;
   String get bookShortDescription => throw _privateConstructorUsedError;
+  String get bookSynopsis => throw _privateConstructorUsedError;
   double get bookPrice => throw _privateConstructorUsedError;
   double get bookSalePrice => throw _privateConstructorUsedError;
   String get bookImage => throw _privateConstructorUsedError;
   String get bookType => throw _privateConstructorUsedError;
   String get stockStatus => throw _privateConstructorUsedError;
+  List<String>? get relatedBooks => throw _privateConstructorUsedError;
   String get bookId => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
@@ -43,11 +45,13 @@ abstract class $BookCopyWith<$Res> {
       {String bookTitle,
       Category category,
       String bookShortDescription,
+      String bookSynopsis,
       double bookPrice,
       double bookSalePrice,
       String bookImage,
       String bookType,
       String stockStatus,
+      List<String>? relatedBooks,
       String bookId});
 
   $CategoryCopyWith<$Res> get category;
@@ -66,11 +70,13 @@ class _$BookCopyWithImpl<$Res> implements $BookCopyWith<$Res> {
     Object? bookTitle = freezed,
     Object? category = freezed,
     Object? bookShortDescription = freezed,
+    Object? bookSynopsis = freezed,
     Object? bookPrice = freezed,
     Object? bookSalePrice = freezed,
     Object? bookImage = freezed,
     Object? bookType = freezed,
     Object? stockStatus = freezed,
+    Object? relatedBooks = freezed,
     Object? bookId = freezed,
   }) {
     return _then(_value.copyWith(
@@ -85,6 +91,10 @@ class _$BookCopyWithImpl<$Res> implements $BookCopyWith<$Res> {
       bookShortDescription: bookShortDescription == freezed
           ? _value.bookShortDescription
           : bookShortDescription // ignore: cast_nullable_to_non_nullable
+              as String,
+      bookSynopsis: bookSynopsis == freezed
+          ? _value.bookSynopsis
+          : bookSynopsis // ignore: cast_nullable_to_non_nullable
               as String,
       bookPrice: bookPrice == freezed
           ? _value.bookPrice
@@ -106,6 +116,10 @@ class _$BookCopyWithImpl<$Res> implements $BookCopyWith<$Res> {
           ? _value.stockStatus
           : stockStatus // ignore: cast_nullable_to_non_nullable
               as String,
+      relatedBooks: relatedBooks == freezed
+          ? _value.relatedBooks
+          : relatedBooks // ignore: cast_nullable_to_non_nullable
+              as List<String>?,
       bookId: bookId == freezed
           ? _value.bookId
           : bookId // ignore: cast_nullable_to_non_nullable
@@ -130,11 +144,13 @@ abstract class _$$_BookCopyWith<$Res> implements $BookCopyWith<$Res> {
       {String bookTitle,
       Category category,
       String bookShortDescription,
+      String bookSynopsis,
       double bookPrice,
       double bookSalePrice,
       String bookImage,
       String bookType,
       String stockStatus,
+      List<String>? relatedBooks,
       String bookId});
 
   @override
@@ -155,11 +171,13 @@ class __$$_BookCopyWithImpl<$Res> extends _$BookCopyWithImpl<$Res>
     Object? bookTitle = freezed,
     Object? category = freezed,
     Object? bookShortDescription = freezed,
+    Object? bookSynopsis = freezed,
     Object? bookPrice = freezed,
     Object? bookSalePrice = freezed,
     Object? bookImage = freezed,
     Object? bookType = freezed,
     Object? stockStatus = freezed,
+    Object? relatedBooks = freezed,
     Object? bookId = freezed,
   }) {
     return _then(_$_Book(
@@ -174,6 +192,10 @@ class __$$_BookCopyWithImpl<$Res> extends _$BookCopyWithImpl<$Res>
       bookShortDescription: bookShortDescription == freezed
           ? _value.bookShortDescription
           : bookShortDescription // ignore: cast_nullable_to_non_nullable
+              as String,
+      bookSynopsis: bookSynopsis == freezed
+          ? _value.bookSynopsis
+          : bookSynopsis // ignore: cast_nullable_to_non_nullable
               as String,
       bookPrice: bookPrice == freezed
           ? _value.bookPrice
@@ -195,6 +217,10 @@ class __$$_BookCopyWithImpl<$Res> extends _$BookCopyWithImpl<$Res>
           ? _value.stockStatus
           : stockStatus // ignore: cast_nullable_to_non_nullable
               as String,
+      relatedBooks: relatedBooks == freezed
+          ? _value._relatedBooks
+          : relatedBooks // ignore: cast_nullable_to_non_nullable
+              as List<String>?,
       bookId: bookId == freezed
           ? _value.bookId
           : bookId // ignore: cast_nullable_to_non_nullable
@@ -210,12 +236,15 @@ class _$_Book implements _Book {
       {required this.bookTitle,
       required this.category,
       required this.bookShortDescription,
+      required this.bookSynopsis,
       required this.bookPrice,
       required this.bookSalePrice,
       required this.bookImage,
       required this.bookType,
       required this.stockStatus,
-      required this.bookId});
+      final List<String>? relatedBooks,
+      required this.bookId})
+      : _relatedBooks = relatedBooks;
 
   factory _$_Book.fromJson(Map<String, dynamic> json) => _$$_BookFromJson(json);
 
@@ -226,6 +255,8 @@ class _$_Book implements _Book {
   @override
   final String bookShortDescription;
   @override
+  final String bookSynopsis;
+  @override
   final double bookPrice;
   @override
   final double bookSalePrice;
@@ -235,12 +266,21 @@ class _$_Book implements _Book {
   final String bookType;
   @override
   final String stockStatus;
+  final List<String>? _relatedBooks;
+  @override
+  List<String>? get relatedBooks {
+    final value = _relatedBooks;
+    if (value == null) return null;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(value);
+  }
+
   @override
   final String bookId;
 
   @override
   String toString() {
-    return 'Book(bookTitle: $bookTitle, category: $category, bookShortDescription: $bookShortDescription, bookPrice: $bookPrice, bookSalePrice: $bookSalePrice, bookImage: $bookImage, bookType: $bookType, stockStatus: $stockStatus, bookId: $bookId)';
+    return 'Book(bookTitle: $bookTitle, category: $category, bookShortDescription: $bookShortDescription, bookSynopsis: $bookSynopsis, bookPrice: $bookPrice, bookSalePrice: $bookSalePrice, bookImage: $bookImage, bookType: $bookType, stockStatus: $stockStatus, relatedBooks: $relatedBooks, bookId: $bookId)';
   }
 
   @override
@@ -252,6 +292,8 @@ class _$_Book implements _Book {
             const DeepCollectionEquality().equals(other.category, category) &&
             const DeepCollectionEquality()
                 .equals(other.bookShortDescription, bookShortDescription) &&
+            const DeepCollectionEquality()
+                .equals(other.bookSynopsis, bookSynopsis) &&
             const DeepCollectionEquality().equals(other.bookPrice, bookPrice) &&
             const DeepCollectionEquality()
                 .equals(other.bookSalePrice, bookSalePrice) &&
@@ -259,6 +301,8 @@ class _$_Book implements _Book {
             const DeepCollectionEquality().equals(other.bookType, bookType) &&
             const DeepCollectionEquality()
                 .equals(other.stockStatus, stockStatus) &&
+            const DeepCollectionEquality()
+                .equals(other._relatedBooks, _relatedBooks) &&
             const DeepCollectionEquality().equals(other.bookId, bookId));
   }
 
@@ -269,11 +313,13 @@ class _$_Book implements _Book {
       const DeepCollectionEquality().hash(bookTitle),
       const DeepCollectionEquality().hash(category),
       const DeepCollectionEquality().hash(bookShortDescription),
+      const DeepCollectionEquality().hash(bookSynopsis),
       const DeepCollectionEquality().hash(bookPrice),
       const DeepCollectionEquality().hash(bookSalePrice),
       const DeepCollectionEquality().hash(bookImage),
       const DeepCollectionEquality().hash(bookType),
       const DeepCollectionEquality().hash(stockStatus),
+      const DeepCollectionEquality().hash(_relatedBooks),
       const DeepCollectionEquality().hash(bookId));
 
   @JsonKey(ignore: true)
@@ -294,11 +340,13 @@ abstract class _Book implements Book {
       {required final String bookTitle,
       required final Category category,
       required final String bookShortDescription,
+      required final String bookSynopsis,
       required final double bookPrice,
       required final double bookSalePrice,
       required final String bookImage,
       required final String bookType,
       required final String stockStatus,
+      final List<String>? relatedBooks,
       required final String bookId}) = _$_Book;
 
   factory _Book.fromJson(Map<String, dynamic> json) = _$_Book.fromJson;
@@ -310,6 +358,8 @@ abstract class _Book implements Book {
   @override
   String get bookShortDescription;
   @override
+  String get bookSynopsis;
+  @override
   double get bookPrice;
   @override
   double get bookSalePrice;
@@ -319,6 +369,8 @@ abstract class _Book implements Book {
   String get bookType;
   @override
   String get stockStatus;
+  @override
+  List<String>? get relatedBooks;
   @override
   String get bookId;
   @override

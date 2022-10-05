@@ -14,11 +14,13 @@ abstract class Book with _$Book {
       {required String bookTitle,
       required Category category,
       required String bookShortDescription,
+      required String bookSynopsis,
       required double bookPrice,
       required double bookSalePrice,
       required String bookImage,
       required String bookType,
       required String stockStatus,
+      List<String>? relatedBooks,
       required String bookId}) = _Book;
 
   factory Book.fromJson(Map<String, dynamic> json) => _$BookFromJson(json);

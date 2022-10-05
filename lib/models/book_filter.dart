@@ -9,5 +9,6 @@ abstract class BookFilterModel with _$BookFilterModel {
     required PaginationModel paginationModel,
     String? categoryId,
     String? sortBy,
+    List<String>? bookIds,
   }) = _BookFilterModel;
 }

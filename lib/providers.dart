@@ -47,3 +47,18 @@ final slidersProvider =
         paginationModel.page, paginationModel.pageSize);
   },
 );
+
+final bookDetailsProvider = FutureProvider.family<Book?, String>(
+  (ref, bookId) {
+    final apiRepository = ref.watch(apiService);
+    return apiRepository.getBookDetails(bookId);
+  },
+);
+
+final relatedBooksProvider =
+    FutureProvider.family<List<Book>?, BookFilterModel>(
+  (ref, bookFilterModel) {
+    final apiRepository = ref.watch(apiService);
+    return apiRepository.getBooks(bookFilterModel);
+  },
+);

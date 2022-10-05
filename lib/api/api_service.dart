@@ -58,6 +58,10 @@ class APIService {
       queryString['sort'] = bookFilterModel.sortBy!;
     }
 
+    if (bookFilterModel.bookIds != null) {
+      queryString["bookIds"] = bookFilterModel.bookIds!.join(",");
+    }
+
     var url = Uri.http(Config.apiURL, Config.bookAPI, queryString);
 
     var response = await client.get(url, headers: requestHeaders);
@@ -138,6 +142,21 @@ class APIService {
       var data = jsonDecode(response.body);
 
       return sliderFromJson(data["data"]);
+    } else {
+      return null;
+    }
+  }
+
+  Future<Book?> getBookDetails(String bookId) async {
+    Map<String, String> requestHeaders = {'Content-Type': 'application/json'};
+
+    var url = Uri.http(Config.apiURL, Config.bookAPI + "/" + bookId);
+    var response = await client.get(url, headers: requestHeaders);
+
+    if (response.statusCode == 200) {
+      var data = jsonDecode(response.body);
+
+      return Book.fromJson(data["data"]);
     } else {
       return null;
     }

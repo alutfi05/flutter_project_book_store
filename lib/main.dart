@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_project_book_store/pages/book_details_page.dart';
 import 'package:flutter_project_book_store/pages/books_page.dart';
 import 'package:flutter_project_book_store/pages/dashboard_page.dart';
 import 'package:flutter_project_book_store/pages/home_page.dart';
@@ -36,7 +37,8 @@ class MyApp extends StatelessWidget {
         '/register': (BuildContext context) => const RegisterPage(),
         '/login': (BuildContext context) => const LoginPage(),
         '/home': (BuildContext context) => const HomePage(),
-        '/books': (BuildContext context) => const BooksPage()
+        '/books': (BuildContext context) => const BooksPage(),
+        '/book-details': (BuildContext context) => const BookDetailsPage(),
       },
     );
   }

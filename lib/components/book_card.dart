@@ -42,13 +42,21 @@ class BookCard extends StatelessWidget {
                   ),
                 ),
               ),
-              SizedBox(
-                child: Image.network(
-                  model!.fullImagePath,
-                  fit: BoxFit.cover,
+              GestureDetector(
+                child: SizedBox(
+                  child: Image.network(
+                    model!.fullImagePath,
+                    fit: BoxFit.cover,
+                  ),
+                  height: 100,
+                  width: MediaQuery.of(context).size.width,
                 ),
-                height: 100,
-                width: MediaQuery.of(context).size.width,
+                onTap: () {
+                  Navigator.of(context).pushNamed(
+                    "/book-details",
+                    arguments: {'bookId': model!.bookId},
+                  );
+                },
               ),
               Padding(
                 padding: const EdgeInsets.only(top: 8, left: 10),
