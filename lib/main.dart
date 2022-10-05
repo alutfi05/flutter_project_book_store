@@ -8,6 +8,8 @@ import 'package:flutter_project_book_store/pages/register_page.dart';
 import 'package:flutter_project_book_store/utils/shared_service.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
+final GlobalKey<NavigatorState> navigatorKey = GlobalKey<NavigatorState>();
+
 Widget _defaultHome = const LoginPage();
 
 void main() async {
@@ -17,11 +19,11 @@ void main() async {
   if (_result) {
     _defaultHome = const DashboardPage();
   }
-  runApp(const ProviderScope(child: MyApp()));
+  runApp(ProviderScope(child: MyApp()));
 }
 
 class MyApp extends StatelessWidget {
-  const MyApp({super.key});
+  MyApp({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -32,6 +34,7 @@ class MyApp extends StatelessWidget {
         primarySwatch: Colors.blue,
       ),
       // home: const RegisterPage(),
+      navigatorKey: navigatorKey,
       routes: <String, WidgetBuilder>{
         '/': (context) => _defaultHome,
         '/register': (BuildContext context) => const RegisterPage(),

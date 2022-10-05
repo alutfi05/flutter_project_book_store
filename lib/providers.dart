@@ -1,7 +1,9 @@
 import 'package:flutter_project_book_store/api/api_service.dart';
 import 'package:flutter_project_book_store/application/notifier/book_filter_notifier.dart';
 import 'package:flutter_project_book_store/application/notifier/books_notifier.dart';
+import 'package:flutter_project_book_store/application/notifier/cart_notifier.dart';
 import 'package:flutter_project_book_store/application/state/book_state.dart';
+import 'package:flutter_project_book_store/application/state/cart_state.dart';
 import 'package:flutter_project_book_store/models/book.dart';
 import 'package:flutter_project_book_store/models/slider.dart';
 import 'package:flutter_project_book_store/models/pagination.dart';
@@ -61,4 +63,10 @@ final relatedBooksProvider =
     final apiRepository = ref.watch(apiService);
     return apiRepository.getBooks(bookFilterModel);
   },
+);
+
+final cartItemsProvider = StateNotifierProvider<CartNotifier, CartState>(
+  (ref) => CartNotifier(
+    ref.watch(apiService),
+  ),
 );

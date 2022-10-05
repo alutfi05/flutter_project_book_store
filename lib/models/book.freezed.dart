@@ -22,13 +22,13 @@ Book _$BookFromJson(Map<String, dynamic> json) {
 mixin _$Book {
   String get bookTitle => throw _privateConstructorUsedError;
   Category get category => throw _privateConstructorUsedError;
-  String get bookShortDescription => throw _privateConstructorUsedError;
-  String get bookSynopsis => throw _privateConstructorUsedError;
+  String? get bookShortDescription => throw _privateConstructorUsedError;
+  String? get bookSynopsis => throw _privateConstructorUsedError;
   double get bookPrice => throw _privateConstructorUsedError;
   double get bookSalePrice => throw _privateConstructorUsedError;
   String get bookImage => throw _privateConstructorUsedError;
-  String get bookType => throw _privateConstructorUsedError;
-  String get stockStatus => throw _privateConstructorUsedError;
+  String? get bookType => throw _privateConstructorUsedError;
+  String? get stockStatus => throw _privateConstructorUsedError;
   List<String>? get relatedBooks => throw _privateConstructorUsedError;
   String get bookId => throw _privateConstructorUsedError;
 
@@ -44,13 +44,13 @@ abstract class $BookCopyWith<$Res> {
   $Res call(
       {String bookTitle,
       Category category,
-      String bookShortDescription,
-      String bookSynopsis,
+      String? bookShortDescription,
+      String? bookSynopsis,
       double bookPrice,
       double bookSalePrice,
       String bookImage,
-      String bookType,
-      String stockStatus,
+      String? bookType,
+      String? stockStatus,
       List<String>? relatedBooks,
       String bookId});
 
@@ -91,11 +91,11 @@ class _$BookCopyWithImpl<$Res> implements $BookCopyWith<$Res> {
       bookShortDescription: bookShortDescription == freezed
           ? _value.bookShortDescription
           : bookShortDescription // ignore: cast_nullable_to_non_nullable
-              as String,
+              as String?,
       bookSynopsis: bookSynopsis == freezed
           ? _value.bookSynopsis
           : bookSynopsis // ignore: cast_nullable_to_non_nullable
-              as String,
+              as String?,
       bookPrice: bookPrice == freezed
           ? _value.bookPrice
           : bookPrice // ignore: cast_nullable_to_non_nullable
@@ -111,11 +111,11 @@ class _$BookCopyWithImpl<$Res> implements $BookCopyWith<$Res> {
       bookType: bookType == freezed
           ? _value.bookType
           : bookType // ignore: cast_nullable_to_non_nullable
-              as String,
+              as String?,
       stockStatus: stockStatus == freezed
           ? _value.stockStatus
           : stockStatus // ignore: cast_nullable_to_non_nullable
-              as String,
+              as String?,
       relatedBooks: relatedBooks == freezed
           ? _value.relatedBooks
           : relatedBooks // ignore: cast_nullable_to_non_nullable
@@ -143,13 +143,13 @@ abstract class _$$_BookCopyWith<$Res> implements $BookCopyWith<$Res> {
   $Res call(
       {String bookTitle,
       Category category,
-      String bookShortDescription,
-      String bookSynopsis,
+      String? bookShortDescription,
+      String? bookSynopsis,
       double bookPrice,
       double bookSalePrice,
       String bookImage,
-      String bookType,
-      String stockStatus,
+      String? bookType,
+      String? stockStatus,
       List<String>? relatedBooks,
       String bookId});
 
@@ -192,11 +192,11 @@ class __$$_BookCopyWithImpl<$Res> extends _$BookCopyWithImpl<$Res>
       bookShortDescription: bookShortDescription == freezed
           ? _value.bookShortDescription
           : bookShortDescription // ignore: cast_nullable_to_non_nullable
-              as String,
+              as String?,
       bookSynopsis: bookSynopsis == freezed
           ? _value.bookSynopsis
           : bookSynopsis // ignore: cast_nullable_to_non_nullable
-              as String,
+              as String?,
       bookPrice: bookPrice == freezed
           ? _value.bookPrice
           : bookPrice // ignore: cast_nullable_to_non_nullable
@@ -212,11 +212,11 @@ class __$$_BookCopyWithImpl<$Res> extends _$BookCopyWithImpl<$Res>
       bookType: bookType == freezed
           ? _value.bookType
           : bookType // ignore: cast_nullable_to_non_nullable
-              as String,
+              as String?,
       stockStatus: stockStatus == freezed
           ? _value.stockStatus
           : stockStatus // ignore: cast_nullable_to_non_nullable
-              as String,
+              as String?,
       relatedBooks: relatedBooks == freezed
           ? _value._relatedBooks
           : relatedBooks // ignore: cast_nullable_to_non_nullable
@@ -253,9 +253,9 @@ class _$_Book implements _Book {
   @override
   final Category category;
   @override
-  final String bookShortDescription;
+  final String? bookShortDescription;
   @override
-  final String bookSynopsis;
+  final String? bookSynopsis;
   @override
   final double bookPrice;
   @override
@@ -263,9 +263,9 @@ class _$_Book implements _Book {
   @override
   final String bookImage;
   @override
-  final String bookType;
+  final String? bookType;
   @override
-  final String stockStatus;
+  final String? stockStatus;
   final List<String>? _relatedBooks;
   @override
   List<String>? get relatedBooks {
@@ -339,13 +339,13 @@ abstract class _Book implements Book {
   factory _Book(
       {required final String bookTitle,
       required final Category category,
-      required final String bookShortDescription,
-      required final String bookSynopsis,
+      required final String? bookShortDescription,
+      required final String? bookSynopsis,
       required final double bookPrice,
       required final double bookSalePrice,
       required final String bookImage,
-      required final String bookType,
-      required final String stockStatus,
+      required final String? bookType,
+      required final String? stockStatus,
       final List<String>? relatedBooks,
       required final String bookId}) = _$_Book;
 
@@ -356,9 +356,9 @@ abstract class _Book implements Book {
   @override
   Category get category;
   @override
-  String get bookShortDescription;
+  String? get bookShortDescription;
   @override
-  String get bookSynopsis;
+  String? get bookSynopsis;
   @override
   double get bookPrice;
   @override
@@ -366,9 +366,9 @@ abstract class _Book implements Book {
   @override
   String get bookImage;
   @override
-  String get bookType;
+  String? get bookType;
   @override
-  String get stockStatus;
+  String? get stockStatus;
   @override
   List<String>? get relatedBooks;
   @override

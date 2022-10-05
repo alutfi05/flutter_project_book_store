@@ -14,7 +14,7 @@ List<Category> categoriesFromJson(dynamic str) => List<Category>.from(
 abstract class Category with _$Category {
   factory Category({
     required String categoryName,
-    required String categoryImage,
+    required String? categoryImage,
     required String categoryId,
   }) = _Category;
 
@@ -23,5 +23,5 @@ abstract class Category with _$Category {
 }
 
 extension CategoryExt on Category {
-  String get fullImagePath => Config.imageURL + categoryImage;
+  String get fullImagePath => Config.imageURL + categoryImage!;
 }

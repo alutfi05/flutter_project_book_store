@@ -16,6 +16,7 @@ class BookDetailsPage extends ConsumerStatefulWidget {
 
 class _BookDetailsPageState extends ConsumerState<BookDetailsPage> {
   String bookId = "";
+  int qty = 1;
 
   @override
   Widget build(BuildContext context) {
@@ -158,11 +159,16 @@ class _BookDetailsPageState extends ConsumerState<BookDetailsPage> {
                 upperLimit: 20,
                 stepValue: 1,
                 iconSize: 22.0,
-                value: 1,
-                onChanged: (value) {},
+                value: qty,
+                onChanged: (value) {
+                  qty = value["qty"];
+                },
               ),
               TextButton.icon(
-                onPressed: () {},
+                onPressed: () {
+                  final cartViewModel = ref.read(cartItemsProvider.notifier);
+                  cartViewModel.addCartItem(model.bookId, qty);
+                },
                 style: ButtonStyle(
                   backgroundColor: MaterialStateProperty.all(
                     const Color(0xff1bba85),

@@ -1,8 +1,10 @@
 import 'dart:convert';
 
 import 'package:flutter_project_book_store/config.dart';
+import 'package:flutter_project_book_store/main.dart';
 import 'package:flutter_project_book_store/models/book.dart';
 import 'package:flutter_project_book_store/models/book_filter.dart';
+import 'package:flutter_project_book_store/models/cart.dart';
 import 'package:flutter_project_book_store/models/category.dart';
 import 'package:flutter_project_book_store/models/login_response_model.dart';
 import 'package:flutter_project_book_store/models/slider.dart';
@@ -157,6 +159,101 @@ class APIService {
       var data = jsonDecode(response.body);
 
       return Book.fromJson(data["data"]);
+    } else {
+      return null;
+    }
+  }
+
+  Future<Cart?> getCart() async {
+    var loginDetails = await SharedService.loginDetails();
+
+    Map<String, String> requestHeaders = {
+      'Content-Type': 'application/json',
+      'Authorization': '${loginDetails!.data.token.toString()}',
+    };
+
+    var url = Uri.http(Config.apiURL, Config.cartAPI);
+
+    var response = await client.get(url, headers: requestHeaders);
+
+    if (response.statusCode == 200) {
+      var data = jsonDecode(response.body);
+      return Cart.fromJson(data["data"]);
+    } else if (response.statusCode == 401) {
+      navigatorKey.currentState?.pushNamedAndRemoveUntil(
+        "/login",
+        (route) => false,
+      );
+    } else {
+      return null;
+    }
+  }
+
+  Future<bool?> addCartItem(bookId, qty) async {
+    var loginDetails = await SharedService.loginDetails();
+
+    Map<String, String> requestHeaders = {
+      'Content-Type': 'application/json',
+      'Authorization': '${loginDetails!.data.token.toString()}',
+    };
+
+    var url = Uri.http(Config.apiURL, Config.cartAPI);
+
+    var response = await client.post(
+      url,
+      headers: requestHeaders,
+      body: jsonEncode(
+        {
+          "books": [
+            {
+              "book": bookId,
+              "qty": qty,
+            }
+          ]
+        },
+      ),
+    );
+
+    if (response.statusCode == 200) {
+      return true;
+    } else if (response.statusCode == 401) {
+      navigatorKey.currentState?.pushNamedAndRemoveUntil(
+        "/login",
+        (route) => false,
+      );
+    } else {
+      return null;
+    }
+  }
+
+  Future<bool?> removeCartItem(bookId, qty) async {
+    var loginDetails = await SharedService.loginDetails();
+
+    Map<String, String> requestHeaders = {
+      'Content-Type': 'application/json',
+      'Authorization': '${loginDetails!.data.token.toString()}',
+    };
+
+    var url = Uri.http(Config.apiURL, Config.cartAPI);
+
+    var response = await client.delete(
+      url,
+      headers: requestHeaders,
+      body: jsonEncode(
+        {
+          "bookId": bookId,
+          "qty": qty,
+        },
+      ),
+    );
+
+    if (response.statusCode == 200) {
+      return true;
+    } else if (response.statusCode == 401) {
+      navigatorKey.currentState?.pushNamedAndRemoveUntil(
+        "/login",
+        (route) => false,
+      );
     } else {
       return null;
     }

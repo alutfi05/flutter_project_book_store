@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_project_book_store/pages/cart_page.dart';
 import 'package:flutter_project_book_store/pages/home_page.dart';
 
 class DashboardPage extends StatefulWidget {
@@ -11,7 +12,7 @@ class DashboardPage extends StatefulWidget {
 class _DashboardPageState extends State<DashboardPage> {
   final List<Widget> widgetList = const [
     HomePage(),
-    HomePage(),
+    const CartPage(),
     HomePage(),
     HomePage(),
   ];
@@ -22,7 +23,7 @@ class _DashboardPageState extends State<DashboardPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       bottomNavigationBar: BottomNavigationBar(
-        selectedItemColor: Color(0xff1bba85),
+        selectedItemColor: const Color(0xff1bba85),
         unselectedItemColor: Colors.black,
         type: BottomNavigationBarType.shifting,
         currentIndex: index,
