@@ -8,6 +8,7 @@ class Config {
   static const String loginAPI = "api/login";
   static const String sliderAPI = "api/slider";
   static const String cartAPI = "api/cart";
+  static const String orderAPI = "api/order";
   static const int pageSize = 10;
   static const String currency = "Rp ";
 }
