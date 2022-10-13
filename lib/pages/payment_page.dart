@@ -214,7 +214,7 @@ class _PaymentPageState extends ConsumerState<PaymentPage> {
             Center(
               child: FormHelper.submitButton(
                 "Proceed to Confirm",
-                (onTap) async {
+                () async {
                   if (validateAndSave()) {
                     final orderPaymentModel =
                         ref.read(orderPaymentProvider.notifier);
