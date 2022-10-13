@@ -7,16 +7,15 @@ import 'package:flutter_project_book_store/providers.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 class BooksPage extends StatefulWidget {
-  const BooksPage({super.key});
+  String? categoryId;
+  String? categoryName;
+  BooksPage({super.key, this.categoryId, this.categoryName});
 
   @override
   State<BooksPage> createState() => _BooksPageState();
 }
 
 class _BooksPageState extends State<BooksPage> {
-  String? categoryId;
-  String? categoryName;
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -30,12 +29,12 @@ class _BooksPageState extends State<BooksPage> {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             _BookFilters(
-              categoryId: categoryId,
-              categoryName: categoryName,
+              categoryId: widget.categoryId,
+              categoryName: widget.categoryName,
             ),
             Flexible(
-              child: _BookList(),
               flex: 1,
+              child: _BookList(),
             ),
           ],
         ),
@@ -45,12 +44,10 @@ class _BooksPageState extends State<BooksPage> {
 
   @override
   void didChangeDependencies() {
-    final Map? arguments = ModalRoute.of(context)!.settings.arguments as Map;
+    final Map arguments = ModalRoute.of(context)!.settings.arguments as Map;
 
-    if (arguments != null) {
-      categoryName = arguments['categoryName'];
-      categoryId = arguments['categoryId'];
-    }
+    widget.categoryName = arguments['categoryName'];
+    widget.categoryId = arguments['categoryId'];
 
     super.didChangeDependencies();
   }
@@ -64,7 +61,6 @@ class _BookFilters extends ConsumerWidget {
   ];
 
   _BookFilters({
-    Key? key,
     this.categoryName,
     this.categoryId,
   });
