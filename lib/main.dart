@@ -23,7 +23,8 @@ void main() async {
     _defaultHome = const DashboardPage();
   }
 
-  Stripe.publishableKey = "";
+  Stripe.publishableKey =
+      "pk_test_51LpnCUELC17kV4b6zuK9fyJrqJnExtosZ4C1if6nb7zLSqe9Q7k89mGTSd5Qlf64r4wUeLdVgAe5gpjDvj90cV9p00SkqoId5U";
   await Stripe.instance.applySettings();
 
   runApp(ProviderScope(child: MyApp()));

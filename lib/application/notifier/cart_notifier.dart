@@ -1,3 +1,5 @@
+import 'dart:convert';
+
 import 'package:flutter_project_book_store/api/api_service.dart';
 import 'package:flutter_project_book_store/application/state/cart_state.dart';
 import 'package:flutter_project_book_store/models/cart_book.dart';
@@ -16,7 +18,7 @@ class CartNotifier extends StateNotifier<CartState> {
     final cartData = await _apiService.getCart();
 
     state = state.copyWith(cartModel: cartData);
-    state = state.copyWith(isLoading: true);
+    state = state.copyWith(isLoading: false);
   }
 
   Future<void> addCartItem(bookId, qty) async {
