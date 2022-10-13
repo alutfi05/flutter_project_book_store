@@ -1,6 +1,7 @@
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter_project_book_store/models/pagination.dart';
 import 'package:flutter_project_book_store/providers.dart';
+import 'package:flutter_project_book_store/utils/const.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter/material.dart';
 import '../models/slider.dart';
@@ -11,7 +12,7 @@ class HomeSliderWidget extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     return Container(
-      color: Colors.white,
+      color: AppConstants.backgroundColor,
       child: _sliderList(ref),
     );
   }

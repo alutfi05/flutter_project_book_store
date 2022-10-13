@@ -43,13 +43,17 @@ class BookCard extends StatelessWidget {
                 ),
               ),
               GestureDetector(
-                child: SizedBox(
+                child: Container(
+                  margin: const EdgeInsets.only(left: 10, right: 10),
+                  // decoration: BoxDecoration(
+                  //   border: Border.all(width: 0.3),
+                  // ),
+                  height: 100,
+                  width: MediaQuery.of(context).size.width,
                   child: Image.network(
                     model!.fullImagePath,
                     fit: BoxFit.cover,
                   ),
-                  height: 100,
-                  width: MediaQuery.of(context).size.width,
                 ),
                 onTap: () {
                   Navigator.of(context).pushNamed(

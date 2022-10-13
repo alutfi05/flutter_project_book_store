@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_project_book_store/models/book.dart';
 import 'package:flutter_project_book_store/models/book_filter.dart';
-import 'package:flutter_project_book_store/models/category.dart';
 import 'package:flutter_project_book_store/models/pagination.dart';
 import 'package:flutter_project_book_store/providers.dart';
+import 'package:flutter_project_book_store/utils/const.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import '../components/book_card.dart';
 
@@ -50,7 +50,8 @@ class HomeBooksWidget extends ConsumerWidget {
               )
             ],
           ),
-          Padding(
+          Container(
+            color: AppConstants.backgroundColor,
             padding: const EdgeInsets.all(5),
             child: _booksList(ref),
           )
@@ -75,7 +76,7 @@ class HomeBooksWidget extends ConsumerWidget {
       error: (_, __) => const Center(
         child: Text("Error"),
       ),
-      loading: () => Center(
+      loading: () => const Center(
         child: CircularProgressIndicator(),
       ),
     );
@@ -86,7 +87,7 @@ class HomeBooksWidget extends ConsumerWidget {
       height: 200,
       alignment: Alignment.centerLeft,
       child: ListView.builder(
-        physics: ClampingScrollPhysics(),
+        physics: const ClampingScrollPhysics(),
         scrollDirection: Axis.horizontal,
         itemCount: books.length,
         itemBuilder: (context, index) {

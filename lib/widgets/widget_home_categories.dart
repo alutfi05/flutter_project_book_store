@@ -3,6 +3,7 @@ import 'package:flutter_project_book_store/models/book_filter.dart';
 import 'package:flutter_project_book_store/models/category.dart';
 import 'package:flutter_project_book_store/models/pagination.dart';
 import 'package:flutter_project_book_store/providers.dart';
+import 'package:flutter_project_book_store/utils/const.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 class HomeCategoriesWidget extends ConsumerWidget {
@@ -22,9 +23,9 @@ class HomeCategoriesWidget extends ConsumerWidget {
             ),
           ),
         ),
-        Padding(
-          padding:
-              const EdgeInsets.only(top: 10, right: 30, left: 30, bottom: 10),
+        Container(
+          margin: const EdgeInsets.only(left: 24, right: 24),
+          color: AppConstants.backgroundColor,
           child: _categoriesList(ref),
         )
       ],

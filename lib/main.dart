@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_project_book_store/pages/book_details_page.dart';
 import 'package:flutter_project_book_store/pages/books_page.dart';
+import 'package:flutter_project_book_store/pages/cart_page.dart';
 import 'package:flutter_project_book_store/pages/dashboard_page.dart';
 import 'package:flutter_project_book_store/pages/home_page.dart';
 import 'package:flutter_project_book_store/pages/login_pages.dart';
@@ -11,8 +12,6 @@ import 'package:flutter_project_book_store/pages/wishlist_page.dart';
 import 'package:flutter_project_book_store/utils/shared_service.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_stripe/flutter_stripe.dart';
-
-import 'config.dart';
 
 final GlobalKey<NavigatorState> navigatorKey = GlobalKey<NavigatorState>();
 
@@ -53,6 +52,7 @@ class MyApp extends StatelessWidget {
         '/register': (BuildContext context) => const RegisterPage(),
         '/login': (BuildContext context) => const LoginPage(),
         '/home': (BuildContext context) => const HomePage(),
+        '/cart': (BuildContext context) => const CartPage(),
         '/books': (BuildContext context) => BooksPage(),
         '/book-details': (BuildContext context) => const BookDetailsPage(),
         '/payments': (context) => const PaymentPage(),
