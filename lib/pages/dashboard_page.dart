@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_project_book_store/pages/cart_page.dart';
 import 'package:flutter_project_book_store/pages/home_page.dart';
+import 'package:flutter_project_book_store/pages/wishlist_page.dart';
 
 class DashboardPage extends StatefulWidget {
   const DashboardPage({super.key});
@@ -12,8 +13,8 @@ class DashboardPage extends StatefulWidget {
 class _DashboardPageState extends State<DashboardPage> {
   final List<Widget> widgetList = const [
     HomePage(),
-    const CartPage(),
-    HomePage(),
+    CartPage(),
+    WishlistPage(),
     HomePage(),
   ];
 
@@ -27,9 +28,9 @@ class _DashboardPageState extends State<DashboardPage> {
         unselectedItemColor: Colors.black,
         type: BottomNavigationBarType.shifting,
         currentIndex: index,
-        onTap: (_index) {
+        onTap: (index) {
           setState(() {
-            index = _index;
+            index = index;
           });
         },
         items: const [

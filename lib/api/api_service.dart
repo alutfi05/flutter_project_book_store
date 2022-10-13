@@ -9,6 +9,7 @@ import 'package:flutter_project_book_store/models/category.dart';
 import 'package:flutter_project_book_store/models/login_response_model.dart';
 import 'package:flutter_project_book_store/models/order_payment.dart';
 import 'package:flutter_project_book_store/models/slider.dart';
+import 'package:flutter_project_book_store/models/wishlist.dart';
 import 'package:flutter_project_book_store/utils/shared_service.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:http/http.dart' as http;
@@ -110,7 +111,8 @@ class APIService {
 
     var url = Uri.http(Config.apiURL, Config.loginAPI);
 
-    var response = await client.post(
+    var response = await client
+        .post(
       url,
       headers: requestHeaders,
       body: jsonEncode(
@@ -119,6 +121,17 @@ class APIService {
           "password": password,
         },
       ),
+    )
+        .timeout(
+      const Duration(
+        seconds: 5,
+      ),
+      onTimeout: () {
+        return http.Response(
+          'Error',
+          408,
+        );
+      },
     );
 
     if (response.statusCode == 200) {
@@ -153,7 +166,7 @@ class APIService {
   Future<Book?> getBookDetails(String bookId) async {
     Map<String, String> requestHeaders = {'Content-Type': 'application/json'};
 
-    var url = Uri.http(Config.apiURL, Config.bookAPI + "/" + bookId);
+    var url = Uri.http(Config.apiURL, "${Config.bookAPI}/$bookId");
     var response = await client.get(url, headers: requestHeaders);
 
     if (response.statusCode == 200) {
@@ -170,7 +183,7 @@ class APIService {
 
     Map<String, String> requestHeaders = {
       'Content-Type': 'application/json',
-      'Authorization': '${loginDetails!.data.token.toString()}',
+      'Authorization': loginDetails!.data.token.toString(),
     };
 
     var url = Uri.http(Config.apiURL, Config.cartAPI);
@@ -188,6 +201,7 @@ class APIService {
     } else {
       return null;
     }
+    return null;
   }
 
   Future<bool?> addCartItem(bookId, qty) async {
@@ -195,7 +209,7 @@ class APIService {
 
     Map<String, String> requestHeaders = {
       'Content-Type': 'application/json',
-      'Authorization': '${loginDetails!.data.token.toString()}',
+      'Authorization': loginDetails!.data.token.toString(),
     };
 
     var url = Uri.http(Config.apiURL, Config.cartAPI);
@@ -225,6 +239,7 @@ class APIService {
     } else {
       return null;
     }
+    return null;
   }
 
   Future<bool?> removeCartItem(bookId, qty) async {
@@ -232,7 +247,7 @@ class APIService {
 
     Map<String, String> requestHeaders = {
       'Content-Type': 'application/json',
-      'Authorization': '${loginDetails!.data.token.toString()}',
+      'Authorization': loginDetails!.data.token.toString(),
     };
 
     var url = Uri.http(Config.apiURL, Config.cartAPI);
@@ -258,6 +273,7 @@ class APIService {
     } else {
       return null;
     }
+    return null;
   }
 
   Future<Map<String, dynamic>> processPayment(
@@ -347,5 +363,31 @@ class APIService {
     } else {
       return false;
     }
+    return null;
+  }
+
+  Future<Wishlist?> getAllWishList(bookId, userId) async {
+    var loginDetails = await SharedService.loginDetails();
+
+    Map<String, String> requestHeaders = {
+      'Content-Type': 'application/json',
+      'Authorization': '${loginDetails?.data.token.toString()}',
+    };
+
+    var url = Uri.http(Config.apiURL, Config.wishlistApi);
+    var res = await client.get(url, headers: requestHeaders);
+
+    if (res.statusCode == 200) {
+      var data = jsonDecode(res.body);
+      return Wishlist.fromJson(data["data"]);
+    } else if (res.statusCode == 401) {
+      navigatorKey.currentState?.pushNamedAndRemoveUntil(
+        "/login",
+        (route) => false,
+      );
+    } else {
+      return null;
+    }
+    return null;
   }
 }
