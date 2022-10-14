@@ -20,10 +20,11 @@ class _BooksPageState extends State<BooksPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Books'),
+        backgroundColor: const Color(0xff1bba85),
+        title: Text(widget.categoryName! ?? ""),
       ),
       body: Container(
-        color: Colors.grey[300],
+        color: Colors.white38,
         child: Column(
           mainAxisAlignment: MainAxisAlignment.start,
           crossAxisAlignment: CrossAxisAlignment.start,
@@ -78,18 +79,18 @@ class _BookFilters extends ConsumerWidget {
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
-          Padding(
-            padding: const EdgeInsets.all(8.0),
-            child: Text(
-              categoryName!,
-              style: const TextStyle(
-                fontWeight: FontWeight.bold,
-                fontSize: 15,
-              ),
-            ),
-          ),
+          // Padding(
+          //   padding: const EdgeInsets.all(8.0),
+          //   child: Text(
+          //     categoryName!,
+          //     style: const TextStyle(
+          //       fontWeight: FontWeight.bold,
+          //       fontSize: 15,
+          //     ),
+          //   ),
+          // ),
           Container(
-            decoration: BoxDecoration(color: Colors.grey[300]),
+            decoration: BoxDecoration(color: Colors.white38),
             child: PopupMenuButton(
               onSelected: (sortBy) {
                 BookFilterModel filterModel = BookFilterModel(

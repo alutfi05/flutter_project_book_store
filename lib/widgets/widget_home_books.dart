@@ -51,7 +51,7 @@ class HomeBooksWidget extends ConsumerWidget {
             ],
           ),
           Container(
-            color: AppConstants.backgroundColor,
+            color: Colors.white,
             padding: const EdgeInsets.all(5),
             child: _booksList(ref),
           )

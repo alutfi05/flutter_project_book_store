@@ -24,8 +24,8 @@ class HomeCategoriesWidget extends ConsumerWidget {
           ),
         ),
         Container(
-          margin: const EdgeInsets.only(left: 24, right: 24),
-          color: AppConstants.backgroundColor,
+          margin: const EdgeInsets.only(left: 20, right: 20),
+          color: Colors.white,
           child: _categoriesList(ref),
         )
       ],
@@ -56,9 +56,9 @@ class HomeCategoriesWidget extends ConsumerWidget {
     return GridView.builder(
       gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
         crossAxisSpacing: 2,
-        crossAxisCount: 4,
+        crossAxisCount: 3,
         mainAxisSpacing: 2,
-        childAspectRatio: 0.8,
+        childAspectRatio: 0.9,
       ),
       shrinkWrap: true,
       physics: const ClampingScrollPhysics(),
@@ -108,10 +108,10 @@ class HomeCategoriesWidget extends ConsumerWidget {
                         fontWeight: FontWeight.bold,
                       ),
                     ),
-                    const Icon(
-                      Icons.keyboard_arrow_right,
-                      size: 13,
-                    )
+                    // const Icon(
+                    //   Icons.keyboard_arrow_right,
+                    //   size: 13,
+                    // )
                   ],
                 )
               ],

@@ -49,7 +49,7 @@ class CartNotifier extends StateNotifier<CartState> {
     if (type == "-") {
       await _apiService.removeCartItem(bookId, 1);
 
-      if (cartItem.qty > 1) {
+      if (cartItem.qty >= 1) {
         CartBook cartBook = CartBook(
           qty: cartItem.qty - 1,
           book: cartItem.book,

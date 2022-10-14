@@ -12,7 +12,7 @@ class HomeSliderWidget extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     return Container(
-      color: AppConstants.backgroundColor,
+      color: Colors.white,
       child: _sliderList(ref),
     );
   }
