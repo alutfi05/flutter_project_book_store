@@ -44,6 +44,7 @@ class HomeSliderWidget extends ConsumerWidget {
     List<SliderModel> sliderList,
   ) {
     return CarouselSlider(
+      
       items: sliderList.map((model) {
         return Container(
           decoration: BoxDecoration(

@@ -20,7 +20,7 @@ class _BooksPageState extends State<BooksPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Books'),
+        title: Text(widget.categoryName!),
       ),
       body: Container(
         color: Colors.grey[300],

@@ -19,64 +19,7 @@ class WishlistModel {
   });
 }
 
-List<WishlistModel> wishListData = [
-  WishlistModel(
-    id: 1,
-    bookTitle: 'One Piece',
-    image: "",
-    price: 200000,
-    stock: 13,
-  ),
-  WishlistModel(
-    id: 2,
-    bookTitle: 'One Piece',
-    image: "",
-    price: 200000,
-    stock: 13,
-  ),
-  WishlistModel(
-    id: 3,
-    bookTitle: 'One Piece',
-    image: "",
-    price: 200000,
-    stock: 13,
-  ),
-  WishlistModel(
-    id: 4,
-    bookTitle: 'One Piece',
-    image: "",
-    price: 200000,
-    stock: 13,
-  ),
-  WishlistModel(
-    id: 5,
-    bookTitle: 'One Piece',
-    image: "",
-    price: 200000,
-    stock: 13,
-  ),
-  WishlistModel(
-    id: 6,
-    bookTitle: 'One Piece',
-    image: "",
-    price: 200000,
-    stock: 13,
-  ),
-  WishlistModel(
-    id: 7,
-    bookTitle: 'One Piece',
-    image: "",
-    price: 200000,
-    stock: 13,
-  ),
-  WishlistModel(
-    id: 8,
-    bookTitle: 'One Piece',
-    image: "",
-    price: 200000,
-    stock: 13,
-  ),
-];
+List<WishlistModel> wishListData = [];
 
 List<Wishlist> wishlistFromJson(dynamic str) =>
     List<Wishlist>.from((str).map((x) => Wishlist.fromJson(x)));
