@@ -45,7 +45,7 @@ class _DashboardPageState extends State<DashboardPage> {
           ),
           BottomNavigationBarItem(
             icon: Icon(Icons.favorite),
-            label: "Favorite",
+            label: "Wishlist",
           ),
           BottomNavigationBarItem(
             icon: Icon(Icons.supervised_user_circle),

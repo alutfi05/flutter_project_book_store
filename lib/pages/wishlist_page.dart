@@ -39,25 +39,34 @@ class _WishlistPageState extends ConsumerState<WishlistPage> {
     final double boxImageSize = (MediaQuery.of(context).size.width / 4);
 
     return Scaffold(
-        appBar: AppBar(
-          automaticallyImplyLeading: false,
-          elevation: 0,
-          title: Text(
-            'Wishlist',
-            style: TextStyle(fontSize: 18, color: AppConstants.headingColor),
-          ),
-          backgroundColor: AppConstants.backgroundColor,
-          systemOverlayStyle: SystemUiOverlayStyle.dark,
+      appBar: AppBar(
+        automaticallyImplyLeading: false,
+        elevation: 0,
+        title: Text(
+          'Wishlist',
+          style: TextStyle(fontSize: 18, color: Colors.white),
         ),
-        body: AnimatedList(
-          key: _listKey,
-          initialItemCount: wishListData.length,
-          physics: const AlwaysScrollableScrollPhysics(),
-          itemBuilder: (context, index, animation) {
-            return _buildWishlistCard(
-                wishListData[index], boxImageSize, animation, index);
-          },
-        ));
+        backgroundColor: const Color(0xff1bba85),
+        systemOverlayStyle: SystemUiOverlayStyle.dark,
+      ),
+      body: Container(
+        child: wishListData.isEmpty
+            ? _wishListEmpty()
+            : AnimatedList(
+                key: _listKey,
+                initialItemCount: wishListData.length,
+                physics: const AlwaysScrollableScrollPhysics(),
+                itemBuilder: (context, index, animation) {
+                  return _buildWishlistCard(
+                      wishListData[index], boxImageSize, animation, index);
+                },
+              ),
+      ),
+    );
+  }
+
+  Widget _wishListEmpty() {
+    return const Center(child: Text('Wishlist Empty'));
   }
 
   Widget _buildWishlistCard(
